@@ -8,18 +8,18 @@ class GamesController < ApplicationController
 
 
   def score
-    @words = params[:word]
+    words = params[:word]
     word_to_char = words.upcase.chars
     answer = URI.open("https://wagon-dictionary.herokuapp.com/#{words}").read
     output = JSON.parse(answer)
-    @generate = params[:letters].chars
+    generate = params[:letters].chars.join(', ')
 
     if output['found'] == true && word_checker(word_to_char, generate)
-      @outcome = "Congratulation! #{words} is a valid English word!"
+      @outcome = "<b>Congratulation!</b> #{words.upcase} is a valid English word!".html_safe
     elsif word_checker(word_to_char, generate) == false
-      @outcome = "Sorry but #{words} can't be built out of #{generate}"
+      @outcome = "Sorry but <b>#{words.upcase}</b> can't be built out of #{generate}".html_safe
     else
-      @outcome = "Sorry but #{words} does not seem to be a valid English word..."
+      @outcome = "Sorry but <b>#{words.upcase}</b> does not seem to be a valid English word...".html_safe
     end
   end
 

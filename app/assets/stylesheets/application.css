@@ -14,7 +14,25 @@
  *= require_self
  */
 
+p {
+  font-size: 20px;
+  margin: 40px 40px 10px;
+}
 
+.field {
+  margin: 10px 40px 10px;
+}
+
+.button {
+  padding: 9px 9px;
+  border-radius: 5px;
+}
+
+.input {
+  width: 250px;
+  height: 30px;
+  border-radius: 5px;
+}
  .inline-list {
   list-style-type: none;
   display: flex;
